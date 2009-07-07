@@ -5,7 +5,7 @@ Name:           augeas
 Version:        0.5.1
 Release:        %mkrel 1
 Summary:        A library for changing configuration files
-Group:          System Environment/Libraries
+Group:          Development/C
 License:        LGPLv2+
 URL:            http://augeas.net/
 Source0:        http://augeas.net/download/%{name}-%{version}.tar.gz
@@ -24,7 +24,8 @@ format and the transformation into a tree.
 
 %package -n %develname
 Summary:        Development files for %{name}
-Group:          Development/Libraries
+Group:          Development/C
+Provides:       %{name}-devel
 Requires:       pkgconfig
 Requires:       %{libname} = %{version}-%{release}
 
@@ -34,7 +35,7 @@ developing applications that use %{name}.
 
 %package -n %{libname}
 Summary:        Libraries for %{name}
-Group:          System Environment/Libraries
+Group:          Development/C
 
 %description -n %{libname}
 The libraries for %{name}.
