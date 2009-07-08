@@ -1,9 +1,9 @@
-%define libname %mklibname dvdread %{major}
-%define develname %mklibname dvdread -d
+%define libname %mklibname augeas %{major}
+%define develname %mklibname augeas -d
 
 Name:           augeas
 Version:        0.5.1
-Release:        %mkrel 1
+Release:        %mkrel 2
 Summary:        A library for changing configuration files
 Group:          Development/C
 License:        LGPLv2+
