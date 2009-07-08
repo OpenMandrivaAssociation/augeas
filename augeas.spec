@@ -48,6 +48,9 @@ The libraries for %{name}.
 %configure2_5x
 %make
 
+%check
+%make check
+
 %install
 rm -rf %{buildroot}
 %makeinstall_std
