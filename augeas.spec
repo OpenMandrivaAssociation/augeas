@@ -1,9 +1,10 @@
+%define major 0
 %define libname %mklibname augeas %{major}
 %define develname %mklibname augeas -d
 
 Name:           augeas
 Version:        0.5.1
-Release:        %mkrel 2
+Release:        %mkrel 3
 Summary:        A library for changing configuration files
 Group:          Development/C
 License:        LGPLv2+
