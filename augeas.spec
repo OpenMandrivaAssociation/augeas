@@ -10,7 +10,7 @@ Group:          Development/C
 License:        LGPLv2+
 URL:            http://augeas.net/
 Source0:        http://augeas.net/download/%{name}-%{version}.tar.gz
-BuildRequires:  readline-devel
+BuildRequires:  readline-devel, ruby
 BuildRoot:      %{_tmppath}/%{name}-%{version}
 
 %description
