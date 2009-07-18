@@ -4,7 +4,7 @@
 
 Name:           augeas
 Version:        0.5.2
-Release:        %mkrel 2
+Release:        %mkrel 3
 Summary:        A library for changing configuration files
 Group:          Development/C
 License:        LGPLv2+
@@ -36,7 +36,7 @@ developing applications that use %{name}.
 
 %package -n %{libname}
 Summary:        Libraries for %{name}
-Requires:       %{name}-data = %{version}-%{release}
+Requires:       %{name}-lenses = %{version}-%{release}
 Group:          Development/C
 
 %description -n %{libname}
