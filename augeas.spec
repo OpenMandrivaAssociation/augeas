@@ -4,7 +4,7 @@
 
 Name:           augeas
 Version:        0.5.2
-Release:        %mkrel 1
+Release:        %mkrel 2
 Summary:        A library for changing configuration files
 Group:          Development/C
 License:        LGPLv2+
@@ -36,10 +36,18 @@ developing applications that use %{name}.
 
 %package -n %{libname}
 Summary:        Libraries for %{name}
+Requires:       %{name}-data = %{version}-%{release}
 Group:          Development/C
 
 %description -n %{libname}
 The libraries for %{name}.
+
+%package lenses
+Summary:        Lenses for %{name}
+Group:          Development/C
+
+%description lenses
+The lenses for %{name}.
 
 %prep
 %setup -q
@@ -64,6 +72,9 @@ rm -rf %{buildroot}
 %{_bindir}/augparse
 %{_bindir}/fadot
 %{_mandir}/man1/*
+
+%files lenses
+%defattr(-,root,root)
 %{_datadir}/augeas
 
 %files -n %{libname}
