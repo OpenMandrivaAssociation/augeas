@@ -3,7 +3,7 @@
 %define develname %mklibname augeas -d
 
 Name:           augeas
-Version:        0.5.3
+Version:        0.6.0
 Release:        %mkrel 1
 Summary:        A library for changing configuration files
 Group:          Development/C
@@ -72,6 +72,8 @@ rm -rf %{buildroot}
 %{_bindir}/augparse
 %{_bindir}/fadot
 %{_mandir}/man1/*
+%{_datadir}/vim/vimfiles/ftdetect/augeas.vim
+%{_datadir}/vim/vimfiles/syntax/augeas.vim
 
 %files lenses
 %defattr(-,root,root)
