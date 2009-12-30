@@ -4,12 +4,14 @@
 
 Name:           augeas
 Version:        0.6.0
-Release:        %mkrel 1
+Release:        %mkrel 2
 Summary:        A library for changing configuration files
 Group:          Development/C
 License:        LGPLv2+
 URL:            http://augeas.net/
 Source0:        http://augeas.net/download/%{name}-%{version}.tar.gz
+# Upstream patch to fix vim syntax file
+Patch0:		augeas-0.6.0-fix-vim-syntax.patch
 BuildRequires:  readline-devel, ruby
 BuildRoot:      %{_tmppath}/%{name}-%{version}
 
@@ -51,6 +53,7 @@ The lenses for %{name}.
 
 %prep
 %setup -q
+%patch0 -p1 -b .vim
 
 %build
 %configure2_5x
