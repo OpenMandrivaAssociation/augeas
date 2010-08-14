@@ -3,11 +3,11 @@
 %define develname %mklibname augeas -d
 
 Name:           augeas
-Version:        0.7.2
+Version:        0.7.3
 Release:        %mkrel 1
 Summary:        A library for changing configuration files
 Group:          Development/C
-License:        LGPLv2+
+License:        LGPv2+
 URL:            http://augeas.net/
 Source0:        http://augeas.net/download/%{name}-%{version}.tar.gz
 BuildRequires:  readline-devel, ruby
