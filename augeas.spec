@@ -4,12 +4,13 @@
 
 Name:           augeas
 Version:        0.7.3
-Release:        %mkrel 1
+Release:        %mkrel 2
 Summary:        A library for changing configuration files
 Group:          Development/C
 License:        LGPv2+
 URL:            http://augeas.net/
 Source0:        http://augeas.net/download/%{name}-%{version}.tar.gz
+Source1:	http://augeas.net/download/%{name}-%{version}.tar.gz.sig
 BuildRequires:  readline-devel, ruby
 BuildRoot:      %{_tmppath}/%{name}-%{version}
 
