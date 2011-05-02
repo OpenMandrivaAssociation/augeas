@@ -4,7 +4,7 @@
 
 Name:           augeas
 Version:        0.8.0
-Release:        %mkrel 1
+Release:        %mkrel 2
 Summary:        A library for changing configuration files
 Group:          Development/C
 License:        LGPv2+
