@@ -1,18 +1,20 @@
 %define major 0
+%define fa_major 1
 %define libname %mklibname augeas %{major}
+%define libfa %mklibname fa %{fa_major}
 %define develname %mklibname augeas -d
 
-Name:           augeas
-Version:        0.9.0
-Release:        %mkrel 1
-Summary:        A library for changing configuration files
-Group:          Development/C
-License:        LGPv2+
-URL:            http://augeas.net/
-Source0:        http://augeas.net/download/%{name}-%{version}.tar.gz
+Name:		augeas
+Version:	0.9.0
+Release:	2
+Summary:	A library for changing configuration files
+Group:		Development/C
+License:	LGPv2+
+URL:		http://augeas.net/
+Source0:	http://augeas.net/download/%{name}-%{version}.tar.gz
 Source1:	http://augeas.net/download/%{name}-%{version}.tar.gz.sig
-BuildRequires:  readline-devel, ruby
-BuildRoot:      %{_tmppath}/%{name}-%{version}
+BuildRequires:  readline-devel
+BuildRequires:	ruby
 
 %description
 A library for programmatically editing configuration files. Augeas parses
@@ -25,27 +27,35 @@ details. It is controlled by ``lens'' definitions that describe the file
 format and the transformation into a tree.
 
 %package -n %develname
-Summary:        Development files for %{name}
-Group:          Development/C
-Provides:       %{name}-devel
-Requires:       pkgconfig
-Requires:       %{libname} = %{version}-%{release}
+Summary:	Development files for %{name}
+Group:		Development/C
+Provides:	%{name}-devel
+Requires:	%{libname} = %{version}-%{release}
+Requires:	%{libfa} = %{version}-%{release}
 
 %description -n %develname
 This package contains libraries and header files for
 developing applications that use %{name}.
 
 %package -n %{libname}
-Summary:        Libraries for %{name}
-Requires:       %{name}-lenses = %{version}-%{release}
-Group:          Development/C
+Summary:	Library for %{name}
+Requires:	%{name}-lenses = %{version}-%{release}
+Group:		Development/C
 
 %description -n %{libname}
-The libraries for %{name}.
+The library for %{name}.
+
+%package -n %{libfa}
+Summary:	Library for %{name}
+Group:		Development/C
+Conflicts:	%{libname} < 0.9.0-2
+
+%description -n %{libfa}
+The library for %{name}.
 
 %package lenses
-Summary:        Lenses for %{name}
-Group:          Development/C
+Summary:	Lenses for %{name}
+Group:		Development/C
 
 %description lenses
 The lenses for %{name}.
@@ -54,7 +64,8 @@ The lenses for %{name}.
 %setup -q
 
 %build
-%configure2_5x
+%configure2_5x \
+	--disable-static
 %make
 
 %check
@@ -63,12 +74,9 @@ The lenses for %{name}.
 %install
 rm -rf %{buildroot}
 %makeinstall_std
-
-%clean
-rm -rf %{buildroot}
+find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
 
 %files
-%defattr(-,root,root)
 %{_bindir}/augtool
 %{_bindir}/augparse
 %{_bindir}/fadot
@@ -77,19 +85,17 @@ rm -rf %{buildroot}
 %{_datadir}/vim/vimfiles/syntax/augeas.vim
 
 %files lenses
-%defattr(-,root,root)
+%doc AUTHORS COPYING NEWS
 %{_datadir}/augeas
 
 %files -n %{libname}
-%defattr(-,root,root)
-%doc AUTHORS COPYING NEWS
-%{_libdir}/*.so.*
+%{_libdir}/libaugeas.so.%{major}
+
+%files -n %{libfa}
+%{_libdir}/libfa.so.%{fa_major}
 
 %files -n %{develname}
-%defattr(-,root,root)
 %{_includedir}/*
 %{_libdir}/*.so
-%{_libdir}/*.la
-%{_libdir}/*.a
 %{_libdir}/pkgconfig/augeas.pc
 
