@@ -89,10 +89,10 @@ find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
 %{_datadir}/augeas
 
 %files -n %{libname}
-%{_libdir}/libaugeas.so.%{major}
+%{_libdir}/libaugeas.so.%{major}*
 
 %files -n %{libfa}
-%{_libdir}/libfa.so.%{fa_major}
+%{_libdir}/libfa.so.%{fa_major}*
 
 %files -n %{develname}
 %{_includedir}/*
