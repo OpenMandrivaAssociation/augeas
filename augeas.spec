@@ -29,9 +29,9 @@ format and the transformation into a tree.
 %package -n	%{devname}
 Summary:	Development files for %{name}
 Group:		Development/C
-Provides:	%{name}-devel
-Requires:	%{libname} = %{version}-%{release}
-Requires:	%{libfa} = %{version}-%{release}
+Provides:	%{name}-devel = %{EVRD}
+Requires:	%{libname} = %{EVRD}
+Requires:	%{libfa} = %{EVRD}
 
 %description -n	%{devname}
 This package contains libraries and header files for
@@ -39,7 +39,7 @@ developing applications that use %{name}.
 
 %package -n	%{libname}
 Summary:	Library for %{name}
-Requires:	%{name}-lenses = %{version}-%{release}
+Requires:	%{name}-lenses = %{EVRD}
 Group:		Development/C
 
 %description -n	%{libname}
