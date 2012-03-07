@@ -13,7 +13,7 @@ License:	LGPLv2.1+
 URL:		http://augeas.net/
 Source0:	http://augeas.net/download/%{name}-%{version}.tar.gz
 Source1:	http://augeas.net/download/%{name}-%{version}.tar.gz.sig
-BuildRequires:	readline-devel
+BuildRequires:	readline-devel pkgconfig(libxml-2.0)
 BuildRequires:	ruby
 
 %description
