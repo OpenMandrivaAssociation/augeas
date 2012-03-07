@@ -5,8 +5,8 @@
 %define develname %mklibname augeas -d
 
 Name:		augeas
-Version:	0.9.0
-Release:	2
+Version:	0.10.0
+Release:	1
 Summary:	A library for changing configuration files
 Group:		Development/C
 License:	LGPv2+
