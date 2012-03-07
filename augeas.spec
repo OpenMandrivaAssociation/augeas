@@ -9,7 +9,7 @@ Version:	0.10.0
 Release:	1
 Summary:	A library for changing configuration files
 Group:		Development/C
-License:	LGPv2.1+
+License:	LGPLv2.1+
 URL:		http://augeas.net/
 Source0:	http://augeas.net/download/%{name}-%{version}.tar.gz
 Source1:	http://augeas.net/download/%{name}-%{version}.tar.gz.sig
