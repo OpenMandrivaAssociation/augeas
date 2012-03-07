@@ -1,8 +1,8 @@
-%define major 0
-%define fa_major 1
-%define libname %mklibname augeas %{major}
-%define libfa %mklibname fa %{fa_major}
-%define develname %mklibname augeas -d
+%define	major	0
+%define	famajor	1
+%define	libname	%mklibname augeas %{major}
+%define	libfa	%mklibname fa %{famajor}
+%define	devname	%mklibname augeas -d
 
 Name:		augeas
 Version:	0.10.0
@@ -13,7 +13,7 @@ License:	LGPv2+
 URL:		http://augeas.net/
 Source0:	http://augeas.net/download/%{name}-%{version}.tar.gz
 Source1:	http://augeas.net/download/%{name}-%{version}.tar.gz.sig
-BuildRequires:  readline-devel
+BuildRequires:	readline-devel
 BuildRequires:	ruby
 
 %description
@@ -26,55 +26,52 @@ The transformation works very hard to preserve comments and formatting
 details. It is controlled by ``lens'' definitions that describe the file
 format and the transformation into a tree.
 
-%package -n %develname
+%package -n	%{devname}
 Summary:	Development files for %{name}
 Group:		Development/C
 Provides:	%{name}-devel
 Requires:	%{libname} = %{version}-%{release}
 Requires:	%{libfa} = %{version}-%{release}
 
-%description -n %develname
+%description -n	%{devname}
 This package contains libraries and header files for
 developing applications that use %{name}.
 
-%package -n %{libname}
+%package -n	%{libname}
 Summary:	Library for %{name}
 Requires:	%{name}-lenses = %{version}-%{release}
 Group:		Development/C
 
-%description -n %{libname}
+%description -n	%{libname}
 The library for %{name}.
 
-%package -n %{libfa}
+%package -n	%{libfa}
 Summary:	Library for %{name}
 Group:		Development/C
 Conflicts:	%{libname} < 0.9.0-2
 
-%description -n %{libfa}
+%description -n	%{libfa}
 The library for %{name}.
 
-%package lenses
+%package	lenses
 Summary:	Lenses for %{name}
 Group:		Development/C
 
-%description lenses
+%description	lenses
 The lenses for %{name}.
 
 %prep
 %setup -q
 
 %build
-%configure2_5x \
-	--disable-static
+%configure2_5x	--disable-static
 %make
 
 %check
 %make check
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
-find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
 
 %files
 %{_bindir}/augtool
@@ -92,10 +89,9 @@ find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
 %{_libdir}/libaugeas.so.%{major}*
 
 %files -n %{libfa}
-%{_libdir}/libfa.so.%{fa_major}*
+%{_libdir}/libfa.so.%{famajor}*
 
-%files -n %{develname}
+%files -n %{devname}
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/augeas.pc
-
