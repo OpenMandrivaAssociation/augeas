@@ -82,7 +82,7 @@ The lenses for %{name}.
 %{_datadir}/vim/vimfiles/syntax/augeas.vim
 
 %files lenses
-%doc AUTHORS COPYING NEWS
+%doc AUTHORS NEWS
 %{_datadir}/augeas
 
 %files -n %{libname}
