@@ -6,13 +6,14 @@
 
 Name:		augeas
 Version:	0.10.0
-Release:	1
+Release:	2
 Summary:	A library for changing configuration files
 Group:		Development/C
 License:	LGPLv2.1+
 URL:		http://augeas.net/
 Source0:	http://augeas.net/download/%{name}-%{version}.tar.gz
 Source1:	http://augeas.net/download/%{name}-%{version}.tar.gz.sig
+Patch0:		augeas-0.10.0-add-libxml2-pkgconfig-dependency.patch
 BuildRequires:	readline-devel pkgconfig(libxml-2.0)
 BuildRequires:	ruby
 
@@ -62,6 +63,7 @@ The lenses for %{name}.
 
 %prep
 %setup -q
+%patch0 -p1 -b .libxml2_pc~
 
 %build
 %configure2_5x	--disable-static
