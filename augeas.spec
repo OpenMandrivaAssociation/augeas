@@ -27,17 +27,6 @@ The transformation works very hard to preserve comments and formatting
 details. It is controlled by ``lens'' definitions that describe the file
 format and the transformation into a tree.
 
-%package -n	%{devname}
-Summary:	Development files for %{name}
-Group:		Development/C
-Provides:	%{name}-devel = %{EVRD}
-Requires:	%{libname} = %{EVRD}
-Requires:	%{libfa} = %{EVRD}
-
-%description -n	%{devname}
-This package contains libraries and header files for
-developing applications that use %{name}.
-
 %package -n	%{libname}
 Summary:	Library for %{name}
 Requires:	%{name}-lenses = %{EVRD}
@@ -53,6 +42,17 @@ Conflicts:	%{libname} < 0.9.0-2
 
 %description -n	%{libfa}
 The library for %{name}.
+
+%package -n	%{devname}
+Summary:	Development files for %{name}
+Group:		Development/C
+Provides:	%{name}-devel = %{EVRD}
+Requires:	%{libname} = %{EVRD}
+Requires:	%{libfa} = %{EVRD}
+
+%description -n	%{devname}
+This package contains libraries and header files for
+developing applications that use %{name}.
 
 %package	lenses
 Summary:	Lenses for %{name}
