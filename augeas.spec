@@ -5,18 +5,18 @@
 %define	devname	%mklibname augeas -d
 
 Name:		augeas
-Version:	0.10.0
-Release:	3
+Version:	1.0.0
+Release:	1
 Summary:	A library for changing configuration files
 Group:		Development/C
 License:	LGPLv2.1+
 URL:		http://augeas.net/
 Source0:	http://augeas.net/download/%{name}-%{version}.tar.gz
 Source1:	http://augeas.net/download/%{name}-%{version}.tar.gz.sig
-Patch0:		augeas-0.10.0-add-libxml2-pkgconfig-dependency.patch
+
+BuildRequires:	ruby
 BuildRequires:	readline-devel
 BuildRequires:	pkgconfig(libxml-2.0)
-BuildRequires:	ruby
 
 %description
 A library for programmatically editing configuration files. Augeas parses
@@ -37,8 +37,8 @@ The lenses for %{name}.
 
 %package -n	%{libname}
 Summary:	Library for %{name}
-Requires:	%{name}-lenses = %{EVRD}
 Group:		Development/C
+Requires:	%{name}-lenses = %{EVRD}
 
 %description -n	%{libname}
 The library for %{name}.
