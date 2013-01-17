@@ -78,6 +78,8 @@ developing applications that use %{name}.
 mkdir %{buildroot}/%{_lib}
 mv %{buildroot}%{_libdir}/libaugeas.so.%{major}* %{buildroot}/%{_lib}
 ln -srf %{buildroot}/%{_lib}/libaugeas.so.%{major}.*.* %{buildroot}%{_libdir}/libaugeas.so
+mv %{buildroot}%{_libdir}/libfa.so.%{famajor}* %{buildroot}/%{_lib}
+ln -srf %{buildroot}/%{_lib}/libfa.so.%{famajor}.*.* %{buildroot}%{_libdir}/libfa.so
 
 %files
 %{_bindir}/augtool
@@ -95,7 +97,7 @@ ln -srf %{buildroot}/%{_lib}/libaugeas.so.%{major}.*.* %{buildroot}%{_libdir}/li
 /%{_lib}/libaugeas.so.%{major}*
 
 %files -n %{libfa}
-%{_libdir}/libfa.so.%{famajor}*
+/%{_lib}/libfa.so.%{famajor}*
 
 %files -n %{devname}
 %{_includedir}/*
