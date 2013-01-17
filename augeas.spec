@@ -7,7 +7,7 @@
 Summary:	A library for changing configuration files
 Name:		augeas
 Version:	1.0.0
-Release:	1
+Release:	2
 Group:		Development/C
 License:	LGPLv2.1+
 URL:		http://augeas.net/
@@ -75,6 +75,9 @@ developing applications that use %{name}.
 
 %install
 %makeinstall_std
+mkdir %{buildroot}/%{_lib}
+mv %{buildroot}%{_libdir}/libaugeas.so.%{major}* %{buildroot}/%{_lib}
+ln -srf %{buildroot}/%{_lib}/libaugeas.so.%{major}.*.* %{buildroot}%{_libdir}/libaugeas.so
 
 %files
 %{_bindir}/augtool
@@ -89,13 +92,13 @@ developing applications that use %{name}.
 %{_datadir}/augeas
 
 %files -n %{libname}
-%{_libdir}/libaugeas.so.%{major}*
+/%{_lib}/libaugeas.so.%{major}*
 
 %files -n %{libfa}
 %{_libdir}/libfa.so.%{famajor}*
 
 %files -n %{devname}
 %{_includedir}/*
-%{_libdir}/*.so
+%{_libdir}/libaugeas.so
+%{_libdir}/libfa.so
 %{_libdir}/pkgconfig/augeas.pc
-
