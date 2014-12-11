@@ -15,7 +15,6 @@ URL:		http://augeas.net/
 Source0:	http://download.augeas.net/%{name}-%{version}.tar.gz
 Source1:	http://download.augeas.net/%{name}-%{version}.tar.gz.sig
 
-BuildRequires:	ruby
 BuildRequires:	readline-devel
 BuildRequires:	pkgconfig(libxml-2.0)
 
