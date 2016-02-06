@@ -11,10 +11,8 @@ Release:	3
 Group:		Development/C
 License:	LGPLv2.1+
 URL:		http://augeas.net/
-		
 Source0:	http://download.augeas.net/%{name}-%{version}.tar.gz
 Source1:	http://download.augeas.net/%{name}-%{version}.tar.gz.sig
-
 BuildRequires:	readline-devel
 BuildRequires:	pkgconfig(libxml-2.0)
 
@@ -67,7 +65,7 @@ developing applications that use %{name}.
 %apply_patches
 
 %build
-%configure2_5x	--disable-static
+%configure --disable-static
 %make
 
 %check
