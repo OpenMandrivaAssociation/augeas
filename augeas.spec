@@ -7,13 +7,13 @@
 Summary:	A library for changing configuration files
 Name:		augeas
 Version:	1.2.0
-Release:	3
+Release:	4
 Group:		Development/C
 License:	LGPLv2.1+
 URL:		http://augeas.net/
 Source0:	http://download.augeas.net/%{name}-%{version}.tar.gz
 Source1:	http://download.augeas.net/%{name}-%{version}.tar.gz.sig
-BuildRequires:	readline-devel
+BuildRequires:	readline-devel >= 7.0
 BuildRequires:	pkgconfig(libxml-2.0)
 
 %description
