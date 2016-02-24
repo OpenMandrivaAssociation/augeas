@@ -1,4 +1,2 @@
-removed_sources:
-  augeas-1.0.0.tar.gz: 5d0bc5738cc77ad4731f9406fb8dceb08826bba9
 sources:
-  augeas-1.2.0.tar.gz: ab63548ae5462d7b3dc90e74311b8e566ba22485
+  augeas-1.4.0.tar.gz: 27b563bb173eed6163d76b5b21f3a1566c82351b
