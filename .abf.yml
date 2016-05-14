@@ -1,2 +1,3 @@
 sources:
-  augeas-1.4.0.tar.gz: 27b563bb173eed6163d76b5b21f3a1566c82351b
+  augeas-1.5.0.tar.gz: 0d3b60f7131d5f6b08622c2d790fc8f7735a0689
+  augeas-1.5.0.tar.gz.sig: 294f076b07cb21396a7209d1bd8db43900d385fc
