@@ -3,11 +3,12 @@
 %define	libname	%mklibname augeas %{major}
 %define	libfa	%mklibname fa %{famajor}
 %define	devname	%mklibname augeas -d
+%define	_disable_lto	%nil
 
 Summary:	A library for changing configuration files
 Name:		augeas
 Version:	1.5.0
-Release:	1
+Release:	2
 Group:		Development/C
 License:	LGPLv2.1+
 URL:		http://augeas.net/
