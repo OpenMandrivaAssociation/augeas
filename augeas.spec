@@ -3,6 +3,7 @@
 %define	libname	%mklibname augeas %{major}
 %define	libfa	%mklibname fa %{famajor}
 %define	devname	%mklibname augeas -d
+%define	_disable_lto	%nil
 
 Summary:	A library for changing configuration files
 Name:		augeas
