@@ -7,13 +7,12 @@
 
 Summary:	A library for changing configuration files
 Name:		augeas
-Version:	1.5.0
-Release:	2
+Version:	1.6.0
+Release:	1
 Group:		Development/C
 License:	LGPLv2.1+
 URL:		http://augeas.net/
 Source0:	http://download.augeas.net/%{name}-%{version}.tar.gz
-Source1:	http://download.augeas.net/%{name}-%{version}.tar.gz.sig
 Patch0:		add-missing-argz-conditional.patch
 BuildRequires:	readline-devel >= 7.0
 BuildRequires:	pkgconfig(libxml-2.0)
@@ -90,7 +89,6 @@ ln -srf %{buildroot}/%{_lib}/libfa.so.%{famajor}.*.* %{buildroot}%{_libdir}/libf
 %{_datadir}/vim/vimfiles/syntax/augeas.vim
 
 %files lenses
-%doc AUTHORS NEWS
 %{_datadir}/augeas
 
 %files -n %{libname}
