@@ -5,9 +5,12 @@
 %define	devname	%mklibname augeas -d
 %define	_disable_lto	%nil
 
+# (tpg) optimize it a bit
+%global optflags %optflags -O3
+
 Summary:	A library for changing configuration files
 Name:		augeas
-Version:	1.6.0
+Version:	1.7.0
 Release:	1
 Group:		Development/C
 License:	LGPLv2.1+
