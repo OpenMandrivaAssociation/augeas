@@ -85,6 +85,7 @@ ln -srf %{buildroot}/%{_lib}/libfa.so.%{famajor}.*.* %{buildroot}%{_libdir}/libf
 %files
 %{_bindir}/augtool
 %{_bindir}/augparse
+%{_bindir}/dump
 %{_bindir}/fadot
 %{_mandir}/man1/*
 %{_datadir}/vim/vimfiles/ftdetect/augeas.vim
