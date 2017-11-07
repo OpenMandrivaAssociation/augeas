@@ -9,7 +9,7 @@
 
 Summary:	A library for changing configuration files
 Name:		augeas
-Version:	1.8.0
+Version:	1.9.0
 Release:	1
 Group:		Development/C
 License:	LGPLv2.1+
