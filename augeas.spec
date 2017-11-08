@@ -10,7 +10,7 @@
 
 Summary:	A library for changing configuration files
 Name:		augeas
-Version:	1.8.0
+Version:	1.9.0
 Release:	1
 Group:		Development/C
 License:	LGPLv2.1+
@@ -86,6 +86,7 @@ ln -srf %{buildroot}/%{_lib}/libfa.so.%{famajor}.*.* %{buildroot}%{_libdir}/libf
 %files
 %{_bindir}/augtool
 %{_bindir}/augparse
+%{_bindir}/dump
 %{_bindir}/fadot
 %{_mandir}/man1/*
 %{_datadir}/vim/vimfiles/ftdetect/augeas.vim
