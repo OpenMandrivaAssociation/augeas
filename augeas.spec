@@ -18,6 +18,7 @@ Source0:	http://download.augeas.net/%{name}-%{version}.tar.gz
 Patch0:		add-missing-argz-conditional.patch
 BuildRequires:	readline-devel >= 7.0
 BuildRequires:	pkgconfig(libxml-2.0)
+BuildRequires:	pkgconfig(icu-i18n)
 
 %description
 A library for programmatically editing configuration files. Augeas parses
