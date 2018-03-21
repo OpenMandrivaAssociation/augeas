@@ -9,7 +9,7 @@
 
 Summary:	A library for changing configuration files
 Name:		augeas
-Version:	1.9.0
+Version:	1.10.1
 Release:	1
 Group:		Development/C
 License:	LGPLv2.1+
@@ -66,17 +66,18 @@ developing applications that use %{name}.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 %build
 %configure --disable-static
-%make
+%make_build
 
 %check
 #make check
 
 %install
-%makeinstall_std
+%make_install
+
 mkdir %{buildroot}/%{_lib}
 mv %{buildroot}%{_libdir}/libaugeas.so.%{major}* %{buildroot}/%{_lib}
 ln -srf %{buildroot}/%{_lib}/libaugeas.so.%{major}.*.* %{buildroot}%{_libdir}/libaugeas.so
