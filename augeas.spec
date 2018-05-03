@@ -20,6 +20,8 @@ Patch1:		augeas-1.10.1-check-for-__builtin_mul_overflow_p.patch
 BuildRequires:	readline-devel >= 7.0
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(icu-i18n)
+BuildRequires:	bison
+BuildRequires:	flex
 
 %description
 A library for programmatically editing configuration files. Augeas parses
@@ -85,10 +87,16 @@ ln -srf %{buildroot}/%{_lib}/libaugeas.so.%{major}.*.* %{buildroot}%{_libdir}/li
 mv %{buildroot}%{_libdir}/libfa.so.%{famajor}* %{buildroot}/%{_lib}
 ln -srf %{buildroot}/%{_lib}/libfa.so.%{famajor}.*.* %{buildroot}%{_libdir}/libfa.so
 
+# The tests/ subdirectory contains lenses used only for testing, and
+# so it shouldn't be packaged.
+rm -r %{buildroot}%{_datadir}/augeas/lenses/dist/tests
+
+# In 1.9.0, the example /usr/bin/dump gets installed inadvertently
+rm -f %{buildroot}%{_bindir}/dump
+
 %files
 %{_bindir}/augtool
 %{_bindir}/augparse
-%{_bindir}/dump
 %{_bindir}/fadot
 %{_mandir}/man1/*
 %{_datadir}/vim/vimfiles/ftdetect/augeas.vim
