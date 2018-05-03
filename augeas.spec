@@ -5,9 +5,7 @@
 %define devname %mklibname augeas -d
 
 # (tpg) optimize it a bit
-%global optflags %optflags -O3 --rtlib=compiler-rt
-%define _disable_ld_no_undefined 1
-%define _disable_lto 1
+%global optflags %optflags -O3
 
 Summary:	A library for changing configuration files
 Name:		augeas
@@ -74,6 +72,21 @@ developing applications that use %{name}.
 %autopatch -p1
 
 %build
+# (tpg) build with gcc 2018-05-04
+#BUILDSTDERR: /usr/lib64/clang/7.0.0/lib/linux/libclang_rt.builtins-x86_64.a(gcc_personality_v0.c.o):gcc_personality_v0.c:function __gcc_personality_v0: error: undefined reference to '_Unwind_GetLanguageSpecificData'
+#BUILDSTDERR: /usr/lib64/clang/7.0.0/lib/linux/libclang_rt.builtins-x86_64.a(gcc_personality_v0.c.o):gcc_personality_v0.c:function __gcc_personality_v0: error: undefined reference to '_Unwind_GetIP'
+#BUILDSTDERR: /usr/lib64/clang/7.0.0/lib/linux/libclang_rt.builtins-x86_64.a(gcc_personality_v0.c.o):gcc_personality_v0.c:function __gcc_personality_v0: error: undefined reference to '_Unwind_GetRegionStart'
+#BUILDSTDERR: /usr/lib64/clang/7.0.0/lib/linux/libclang_rt.builtins-x86_64.a(gcc_personality_v0.c.o):gcc_personality_v0.c:function __gcc_personality_v0: error: undefined reference to '_Unwind_SetGR'
+#BUILDSTDERR: /usr/lib64/clang/7.0.0/lib/linux/libclang_rt.builtins-x86_64.a(gcc_personality_v0.c.o):gcc_personality_v0.c:function __gcc_personality_v0: error: undefined reference to '_Unwind_SetGR'
+#BUILDSTDERR: /usr/lib64/clang/7.0.0/lib/linux/libclang_rt.builtins-x86_64.a(gcc_personality_v0.c.o):gcc_personality_v0.c:function __gcc_personality_v0: error: undefined reference to '_Unwind_SetIP'
+#BUILDSTDERR: /tmp/lto-llvm-0cd64c.o:ld-temp.o:function main: error: undefined reference to '_Unwind_Resume'
+#BUILDSTDERR: /tmp/lto-llvm-0cd64c.o:ld-temp.o:function print_tree: error: undefined reference to '_Unwind_Resume'
+#BUILDSTDERR: /tmp/lto-llvm-0cd64c.o:ld-temp.o:function print_tree: error: undefined reference to '_Unwind_Resume'
+#BUILDSTDERR: clang-7: error: linker command failed with exit code 1 (use -v to see invocation)
+#
+export CC=gcc
+export CXX=g++
+
 %configure --disable-static
 %make_build
 
