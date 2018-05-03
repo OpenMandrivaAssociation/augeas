@@ -110,6 +110,7 @@ rm -r %{buildroot}%{_datadir}/augeas/lenses/dist/tests
 rm -f %{buildroot}%{_bindir}/dump
 
 %files
+%{_bindir}/augmatch
 %{_bindir}/augtool
 %{_bindir}/augparse
 %{_bindir}/fadot
