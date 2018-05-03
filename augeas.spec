@@ -6,6 +6,8 @@
 
 # (tpg) optimize it a bit
 %global optflags %optflags -O3 --rtlib=compiler-rt
+%define _disable_ld_no_undefined 1
+%define _disable_lto 1
 
 Summary:	A library for changing configuration files
 Name:		augeas
