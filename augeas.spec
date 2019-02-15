@@ -9,12 +9,12 @@
 
 Summary:	A library for changing configuration files
 Name:		augeas
-Version:	1.10.1
-Release:	4
+Version:	1.11.0
+Release:	1
 Group:		Development/C
 License:	LGPLv2.1+
 URL:		http://augeas.net/
-Source0:	http://download.augeas.net/%{name}-%{version}.tar.gz
+Source0:	http://download.augeas.net/augeas-%{version}.tar.gz
 Patch0:		add-missing-argz-conditional.patch
 Patch1:		augeas-1.10.1-check-for-__builtin_mul_overflow_p.patch
 BuildRequires:	readline-devel >= 7.0
@@ -68,8 +68,7 @@ This package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 # (tpg) build with gcc 2018-05-04
@@ -84,8 +83,8 @@ developing applications that use %{name}.
 #BUILDSTDERR: /tmp/lto-llvm-0cd64c.o:ld-temp.o:function print_tree: error: undefined reference to '_Unwind_Resume'
 #BUILDSTDERR: clang-7: error: linker command failed with exit code 1 (use -v to see invocation)
 #
-export CC=gcc
-export CXX=g++
+#export CC=gcc
+#export CXX=g++
 
 %configure --disable-static
 %make_build
