@@ -5,7 +5,7 @@
 %define devname %mklibname augeas -d
 
 # (tpg) optimize it a bit
-%global optflags %optflags -O3
+%global optflags %optflags -O3 -rtlib=compiler-rt
 
 Summary:	A library for changing configuration files
 Name:		augeas
