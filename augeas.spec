@@ -71,13 +71,12 @@ developing applications that use %{name}.
 %autosetup -p1
 
 %build
-# As of augeas 1.11.0, clang 7.0.1:
-#BUILDSTDERR: safe-alloc.c:54: error: undefined reference to '__muloti4'
-#BUILDSTDERR: safe-alloc.c:94: error: undefined reference to '__muloti4'
-export CC=gcc
-export CXX=g++
+%configure \
+%ifarch %{riscv}
+	--disable-gnulib-tests \
+%endif
+	--disable-static
 
-%configure --disable-static
 %make_build
 
 %check
