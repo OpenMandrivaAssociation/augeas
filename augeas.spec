@@ -1,7 +1,9 @@
 %define major 0
 %define famajor 1
-%define libname %mklibname augeas %{major}
-%define libfa %mklibname fa %{famajor}
+%define libname %mklibname augeas
+%define oldlibname %mklibname augeas 0
+%define libfa %mklibname fa
+%define oldlibfa %mklibname fa 1
 %define devname %mklibname augeas -d
 
 # (tpg) optimize it a bit
@@ -10,7 +12,7 @@
 Summary:	A library for changing configuration files
 Name:		augeas
 Version:	1.12.0
-Release:	1
+Release:	2
 Group:		Development/C
 License:	LGPLv2.1+
 URL:		http://augeas.net/
@@ -44,6 +46,7 @@ The lenses for %{name}.
 Summary:	Library for %{name}
 Group:		Development/C
 Requires:	%{name}-lenses = %{EVRD}
+%rename %{oldlibname}
 
 %description -n %{libname}
 The library for %{name}.
@@ -52,6 +55,7 @@ The library for %{name}.
 Summary:	Library for %{name}
 Group:		Development/C
 Conflicts:	%{libname} < 0.9.0-2
+%rename %{oldlibfa}
 
 %description -n %{libfa}
 The library for %{name}.
