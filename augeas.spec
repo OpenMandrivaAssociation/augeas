@@ -24,6 +24,7 @@ BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(icu-i18n)
 BuildRequires:	bison
 BuildRequires:	flex
+BuildRequires:	slibtool
 
 %description
 A library for programmatically editing configuration files. Augeas parses
@@ -81,13 +82,13 @@ developing applications that use %{name}.
 %endif
 	--disable-static
 
-%make_build
+%make_build LIBTOOL=slibtool-shared
 
 %check
 #make check
 
 %install
-%make_install
+%make_install LIBTOOL=slibtool-shared
 
 mkdir %{buildroot}/%{_lib}
 mv %{buildroot}%{_libdir}/libaugeas.so.%{major}* %{buildroot}/%{_lib}
