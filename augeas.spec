@@ -15,7 +15,7 @@ Version:	1.12.0
 Release:	3
 Group:		Development/C
 License:	LGPLv2.1+
-URL:		http://augeas.net/
+URL:		https://augeas.net/
 Source0:	http://download.augeas.net/augeas-%{version}.tar.gz
 Patch0:		add-missing-argz-conditional.patch
 Patch1:		augeas-1.10.1-check-for-__builtin_mul_overflow_p.patch
