@@ -19,6 +19,10 @@ URL:		https://augeas.net/
 Source0:	http://download.augeas.net/augeas-%{version}.tar.gz
 Patch0:		add-missing-argz-conditional.patch
 Patch1:		augeas-1.10.1-check-for-__builtin_mul_overflow_p.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	make
 BuildRequires:	readline-devel >= 7.0
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(icu-i18n)
