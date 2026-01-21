@@ -1,0 +1,14 @@
+diff -up augeas-1.14.1/Makefile.am.omv~ augeas-1.14.1/Makefile.am
+--- augeas-1.14.1/Makefile.am.omv~	2026-01-21 20:56:30.424889782 +0100
++++ augeas-1.14.1/Makefile.am	2026-01-21 20:56:43.818870863 +0100
+@@ -9,8 +9,8 @@ ACLOCAL_AMFLAGS = -I gnulib/m4
+ lensdir=$(datadir)/augeas/lenses/dist
+ lenstestdir=$(datadir)/augeas/lenses/dist/tests
+ 
+-dist_lens_DATA=$(wildcard lenses/*.aug)
+-dist_lenstest_DATA=$(wildcard lenses/tests/*.aug)
++dist_lens_DATA=$(wildcard $(top_srcdir)/lenses/*.aug)
++dist_lenstest_DATA=$(wildcard $(top_srcdir)/lenses/tests/*.aug)
+ 
+ EXTRA_DIST=augeas.spec build/ac-aux/move-if-change Makefile.am HACKING.md
+ 

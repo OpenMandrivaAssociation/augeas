@@ -11,24 +11,28 @@
 
 Summary:	A library for changing configuration files
 Name:		augeas
-Version:	1.12.0
-Release:	3
+Version:	1.14.1
+Release:	1
 Group:		Development/C
 License:	LGPLv2.1+
 URL:		https://augeas.net/
-Source0:	http://download.augeas.net/augeas-%{version}.tar.gz
-Patch0:		add-missing-argz-conditional.patch
-Patch1:		augeas-1.10.1-check-for-__builtin_mul_overflow_p.patch
-BuildRequires:	autoconf
-BuildRequires:	automake
-BuildRequires:	libtool-base
-BuildRequires:	make
+# download.augeas.net doesn't have any versions newer than 1.12.0
+#Source0:	http://download.augeas.net/augeas-%{version}.tar.gz
+# so let's use the github repo instead https://github.com/hercules-team/augeas
+Source0:	https://github.com/hercules-team/augeas/releases/download/release-%{version}/augeas-%{version}.tar.gz
+BuildSystem:	autotools
 BuildRequires:	readline-devel >= 7.0
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(icu-i18n)
 BuildRequires:	bison
 BuildRequires:	flex
-BuildRequires:	slibtool
+%if %{cross_compiling}
+BuildOption:	--disable-gnulib-tests
+%endif
+
+%patchlist
+add-missing-argz-conditional.patch
+augeas-1.14.1-fix-out-of-tree-build.patch
 
 %description
 A library for programmatically editing configuration files. Augeas parses
@@ -76,54 +80,25 @@ Requires:	%{libfa} = %{EVRD}
 This package contains libraries and header files for
 developing applications that use %{name}.
 
-%prep
-%autosetup -p1
-
-%build
-%configure \
-%ifarch %{riscv}
-	--disable-gnulib-tests \
-%endif
-	--disable-static
-
-%make_build LIBTOOL=slibtool-shared
-
-%check
-#make check
-
-%install
-%make_install LIBTOOL=slibtool-shared
-
-mkdir %{buildroot}/%{_lib}
-mv %{buildroot}%{_libdir}/libaugeas.so.%{major}* %{buildroot}/%{_lib}
-ln -srf %{buildroot}/%{_lib}/libaugeas.so.%{major}.*.* %{buildroot}%{_libdir}/libaugeas.so
-mv %{buildroot}%{_libdir}/libfa.so.%{famajor}* %{buildroot}/%{_lib}
-ln -srf %{buildroot}/%{_lib}/libfa.so.%{famajor}.*.* %{buildroot}%{_libdir}/libfa.so
-
-# The tests/ subdirectory contains lenses used only for testing, and
-# so it shouldn't be packaged.
-rm -r %{buildroot}%{_datadir}/augeas/lenses/dist/tests
-
-# In 1.9.0, the example /usr/bin/dump gets installed inadvertently
-rm -f %{buildroot}%{_bindir}/dump
-
 %files
 %{_bindir}/augmatch
 %{_bindir}/augtool
 %{_bindir}/augparse
+%{_bindir}/augprint
 %{_bindir}/fadot
 %{_mandir}/man1/*
 %{_datadir}/vim/vimfiles/ftdetect/augeas.vim
 %{_datadir}/vim/vimfiles/syntax/augeas.vim
+%{_datadir}/bash-completion/completions/*
 
 %files lenses
 %{_datadir}/augeas
 
 %files -n %{libname}
-/%{_lib}/libaugeas.so.%{major}*
+%{_libdir}/libaugeas.so.%{major}*
 
 %files -n %{libfa}
-/%{_lib}/libfa.so.%{famajor}*
+%{_libdir}/libfa.so.%{famajor}*
 
 %files -n %{devname}
 %{_includedir}/*
