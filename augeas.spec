@@ -21,6 +21,7 @@ URL:		https://augeas.net/
 # so let's use the github repo instead https://github.com/hercules-team/augeas
 Source0:	https://github.com/hercules-team/augeas/releases/download/release-%{version}/augeas-%{version}.tar.gz
 BuildSystem:	autotools
+BuildRequires:	automake
 BuildRequires:	readline-devel >= 7.0
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(icu-i18n)
