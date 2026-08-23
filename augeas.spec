@@ -22,6 +22,7 @@ URL:		https://augeas.net/
 Source0:	https://github.com/hercules-team/augeas/releases/download/release-%{version}/augeas-%{version}.tar.gz
 BuildSystem:	autotools
 BuildRequires:	automake
+BuildRequires:	gnu-config
 BuildRequires:	readline-devel >= 7.0
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(icu-i18n)
@@ -30,6 +31,10 @@ BuildRequires:	flex
 %if %{cross_compiling}
 BuildOption:	--disable-gnulib-tests
 %endif
+
+# Bundled config.sub does not recognize loongarch64 (riscv64 is fine).
+%prep -a
+cp -f %{_bindir}/config.sub %{_bindir}/config.guess build/ac-aux/
 
 %patchlist
 add-missing-argz-conditional.patch
